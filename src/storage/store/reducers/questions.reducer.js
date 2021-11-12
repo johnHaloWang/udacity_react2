@@ -6,12 +6,8 @@ export default function questions(state = initialState, action) {
   switch (action.type) {
     case questionsAction.types.ADD_QUESTION:
       const newQuestion = action.payload;
-      console.log("testing on action.payload::", action.payload);
-      if (newQuestion && newQuestion.id in state)
+      if (newQuestion && !(newQuestion.id in state))
         return { ...state, [newQuestion.id]: newQuestion };
-      else{
-        console.log("not in state");
-      }
       return state;
     
     case questionsAction.types.RECEVIE_QUESTIONS:

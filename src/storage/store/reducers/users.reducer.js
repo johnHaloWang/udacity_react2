@@ -15,11 +15,9 @@ export default function users(state = initialState, action) {
 
     case usersAction.types.ADD_ANSWER_TO_USER:
         let {authedUser, qid, answer} = action.payload;
-        console.log("testing");
         if(authedUser in state){
-
             const updatedUser = state[authedUser];
-            console.log("updateUser: ", updatedUser);
+
             updatedUser.answers[qid] = answer;
             return {...state, [updatedUser.id]: {...updatedUser}};
         }
